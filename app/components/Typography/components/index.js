@@ -15,7 +15,6 @@ function Typography(props) {
     children,
     align,
   } = props;
-  "".map(()=>{})
   return (
     <TypographyMui
       variant={variant}
