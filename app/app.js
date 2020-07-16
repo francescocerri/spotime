@@ -7,12 +7,13 @@
 
 // Needed for redux-saga es6 generator support
 import '@babel/polyfill';
-
 // Import all the third party stuff
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
+import { ThemeProvider } from '@material-ui/core/styles';
+import { theme } from './theme';
 import history from 'utils/history';
 import 'sanitize.css/sanitize.css';
 
@@ -43,7 +44,9 @@ const render = messages => {
     <Provider store={store}>
       <LanguageProvider messages={messages}>
         <ConnectedRouter history={history}>
-          <App />
+          <ThemeProvider theme={theme}>
+            <App />
+          </ThemeProvider>
         </ConnectedRouter>
       </LanguageProvider>
     </Provider>,

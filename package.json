@@ -1,16 +1,12 @@
 {
-  "name": "react-boilerplate",
+  "name": "spoti-me",
   "version": "4.0.0",
-  "description": "A highly scalable, offline-first foundation with the best DX and a focus on performance and best practices",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/react-boilerplate/react-boilerplate.git"
-  },
+  "description": "Custom spotify dashboard",
   "engines": {
     "npm": ">=5",
     "node": ">=8.15.1"
   },
-  "author": "Max Stoiber",
+  "author": "Francesco Cerri",
   "license": "MIT",
   "scripts": {
     "analyze:clean": "rimraf stats.json",
@@ -65,7 +61,10 @@
   },
   "dependencies": {
     "@babel/polyfill": "7.4.3",
-    "chalk": "^2.4.2",
+    "@material-ui/core": "4.11.0",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.56",
+    "chalk": "2.4.2",
     "compression": "1.7.4",
     "connected-react-router": "6.4.0",
     "cross-env": "5.2.0",
@@ -78,10 +77,11 @@
     "invariant": "2.2.4",
     "ip": "1.1.5",
     "lodash": "4.17.11",
+    "loglevel": "^1.6.8",
     "minimist": "1.2.0",
     "prop-types": "15.7.2",
-    "react": "16.8.6",
-    "react-dom": "16.8.6",
+    "react": "16.12.0",
+    "react-dom": "16.12.0",
     "react-helmet": "6.0.0-beta",
     "react-intl": "2.8.0",
     "react-redux": "7.0.2",
