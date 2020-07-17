@@ -7,6 +7,7 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import TypographyMui from '@material-ui/core/Typography';
+import { useStyles } from './styled';
 
 function Typography(props) {
   const {
@@ -15,11 +16,14 @@ function Typography(props) {
     children,
     align,
   } = props;
+  const classes = useStyles(props);
+
   return (
     <TypographyMui
       variant={variant}
       color={color}
       align={align}
+      className={classes.typography}
     >
       {children}
     </TypographyMui>
@@ -52,6 +56,7 @@ Typography.propTypes = {
     'textPrimary',
     'textSecondary',
     'error',
+    'primaryPaper',
   ]),
   align: PropTypes.oneOf([
     'inherit',

@@ -2,6 +2,7 @@
 export default {
   ENV: process.env.NODE_ENV,
   API: {
-    DOMAIN: '',
+    DOMAIN: 'https://api.spotify.com/v1',
+    LOGIN_DOMAIN: 'https://accounts.spotify.com',
   },
 };
