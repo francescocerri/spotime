@@ -21,5 +21,21 @@ const makeSelectAuthorization = () =>
     substate => substate,
   );
 
+const makeSelectLoading = () =>
+  createSelector(
+    selectAuthorizationDomain,
+    substate => substate.loading,
+  );
+
+const makeSelectToken = () =>
+  createSelector(
+    selectAuthorizationDomain,
+    substate => substate.token,
+  );
+
 export default makeSelectAuthorization;
-export { selectAuthorizationDomain };
+export {
+  selectAuthorizationDomain,
+  makeSelectLoading,
+  makeSelectToken
+};

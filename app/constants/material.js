@@ -1,0 +1,1 @@
+export const MILLISECOND_CLOSE_SNACK = 5000;

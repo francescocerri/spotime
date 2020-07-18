@@ -11,7 +11,6 @@ import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-import { useHistory } from 'react-router-dom';
 
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
@@ -22,7 +21,6 @@ import saga from './saga';
 import messages from './messages';
 
 import { getUserCodeByLocation } from './utils';
-import { paths } from '../../routes/utils/paths';
 import { setCookie } from '../../utils/storage';
 import { COOKIE_NAME } from '../../constants/config';
 
@@ -30,7 +28,6 @@ export function Authorization(props) {
   useInjectReducer({ key: 'authorization', reducer });
   useInjectSaga({ key: 'authorization', saga });
   const { getToken } = props;
-  const history = useHistory();
 
   useEffect(() => {
     const userCode = getUserCodeByLocation();

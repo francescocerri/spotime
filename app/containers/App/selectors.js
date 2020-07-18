@@ -10,13 +10,13 @@ const makeSelectLocation = () =>
     routerState => routerState.location,
   );
 
-const getToken = () =>
+const getNotification = () =>
   createSelector(
     selectApp,
-    globalState => globalState.authToken,
+    globalState => globalState.notification,
   );
 
 export {
   makeSelectLocation,
-  getToken,
+  getNotification,
 };

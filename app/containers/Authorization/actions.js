@@ -25,8 +25,12 @@ export function tokenSucceeded() {
   };
 }
 
-export function tokenFailed() {
+export function tokenFailed(ex, notification) {
   return {
     type: TOKEN_FAILED,
+    payload: {
+      notification,
+      ex,
+    },
   };
 }

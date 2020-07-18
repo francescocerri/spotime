@@ -13,4 +13,8 @@ export default defineMessages({
     id: `${scope}.header`,
     defaultMessage: 'This is the Authorization container!',
   },
+  tokenError: {
+    id: `${scope}.tokenError`,
+    defaultMessage: "Controlla di aver inserito i dati correttamente per l'autenticazione",
+  },
 });

@@ -19,17 +19,19 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 
 import { useStyles } from './components/styled';
-import { getToken } from './selectors';
+import { getNotification } from './selectors';
+import { resetGlobalMessage } from './actions';
 import reducer from './reducer';
 import saga from './saga';
 
+import Notification from '../../components/Notification/Loadable';
 import GlobalStyle from '../../global-styles';
 import routes from '../../routes';
 
 function App(props) {
   useInjectReducer({ key: 'app', reducer });
   useInjectSaga({ key: 'app', saga });
-  const { authToken } = props;
+  const { notification, resetNotification } = props;
   const classes = useStyles(props);
   return (
     <div className={classes.root}>
@@ -54,6 +56,9 @@ function App(props) {
               />
             ))}
           </Switch>
+          { notification && !!Object.keys(notification).length &&
+            <Notification {...notification} closeNotification={resetNotification} />
+          }
         </Grid>
         <GlobalStyle />
       </Container>
@@ -62,16 +67,17 @@ function App(props) {
 }
 
 App.propTypes = {
-  authToken: PropTypes.string,
-  location: PropTypes.object,
+  notification: PropTypes.object,
+  resetNotification: PropTypes.func,
 };
 const mapStateToProps = createStructuredSelector({
-  authToken: getToken(),
+  notification: getNotification(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
+    resetNotification: () => dispatch(resetGlobalMessage()),
   };
 }
 

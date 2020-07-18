@@ -1,29 +1,17 @@
 import {
-  SET_AUTH_TOKEN,
-  SPOTIFY_LOGIN_FAILED,
-  SPOTIFY_LOGIN_REQUESTED,
-  SPOTIFY_LOGIN_SUCCEEDED,
+  SET_GLOBAL_MESSAGE,
+  RESET_GLOBAL_MESSAGE
 } from './constants';
 
-export function setAuthToken() {
+export function setGlobalMessage(messageProps) {
   return {
-    type: SET_AUTH_TOKEN,
+    type: SET_GLOBAL_MESSAGE,
+    payload: messageProps,
   };
 }
 
-export function spotifyLoginRequested() {
+export function resetGlobalMessage() {
   return {
-    type: SPOTIFY_LOGIN_REQUESTED,
-  };
-}
-
-export function spotifyLoginSucceeded() {
-  return {
-    type: SPOTIFY_LOGIN_SUCCEEDED,
-  };
-}
-export function spotifyLoginFailed() {
-  return {
-    type: SPOTIFY_LOGIN_FAILED,
+    type: RESET_GLOBAL_MESSAGE,
   };
 }
