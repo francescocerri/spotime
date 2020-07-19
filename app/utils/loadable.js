@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from 'react';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import Loader from '../components/Loader';
 import ErrorBoundary from '../components/ErrorBoundary';
 
 const loadable = (importFunc, { fallback = null } = { fallback: null }) => {
@@ -7,7 +7,7 @@ const loadable = (importFunc, { fallback = null } = { fallback: null }) => {
 
   return props => (
     <ErrorBoundary>
-      <Suspense fallback={fallback || <CircularProgress />}>
+      <Suspense fallback={fallback || <Loader />}>
         <LazyComponent {...props} />
       </Suspense>
     </ErrorBoundary>

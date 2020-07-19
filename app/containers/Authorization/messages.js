@@ -17,4 +17,8 @@ export default defineMessages({
     id: `${scope}.tokenError`,
     defaultMessage: "Controlla di aver inserito i dati correttamente per l'autenticazione",
   },
+  refreshTokenError: {
+    id: `${scope}.refreshTokenError`,
+    defaultMessage: "Errore nell'aggiornanmento del token",
+  },
 });

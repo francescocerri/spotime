@@ -26,7 +26,7 @@ const authorizationReducer = (state = initialState, action) =>
   produce(state, ( draft ) => {
     switch (action.type) {
       case TOKEN_SUCCEEDED:
-        draft.token = action.payload;
+        draft.token = action.payload.tokenData;
         draft.loading = false;
         break;
       case TOKEN_REQUESTED:
