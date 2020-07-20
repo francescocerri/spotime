@@ -78,7 +78,6 @@ export function* getSpotifyToken({ payload: { code } }) {
 
 export function* refreshSpotifyToken() {
   const { refreshToken } = yield select(makeSelectToken());
-  // TODO change auth code
   try {
     const params = {
       url: API.LOGIN.TOKEN,
