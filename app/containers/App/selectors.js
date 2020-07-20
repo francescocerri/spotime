@@ -16,7 +16,21 @@ const getNotification = () =>
     globalState => globalState.notification,
   );
 
+const makeSelectLoading = () =>
+  createSelector(
+    selectApp,
+    substate => substate.loading,
+  );
+
+const makeSelectToken = () =>
+  createSelector(
+    selectApp,
+    substate => substate.token,
+  )
+
 export {
   makeSelectLocation,
   getNotification,
+  makeSelectLoading,
+  makeSelectToken,
 };
