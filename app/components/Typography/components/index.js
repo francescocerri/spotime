@@ -10,18 +10,20 @@ import TypographyMui from '@material-ui/core/Typography';
 import { useStyles } from './styled';
 
 function Typography(props) {
+  const defaultTypo = 'textPrimary';
   const {
     variant,
-    color = 'textPrimary',
+    color = defaultTypo,
+    customColor,
     children,
     align,
   } = props;
   const classes = useStyles(props);
-
+  const typographyColor = customColor ? defaultTypo : color;
   return (
     <TypographyMui
       variant={variant}
-      color={color}
+      color={typographyColor}
       align={align}
       className={classes.typography}
     >
@@ -56,6 +58,8 @@ Typography.propTypes = {
     'textPrimary',
     'textSecondary',
     'error',
+  ]),
+  customColor: PropTypes.oneOf([
     'primaryPaper',
   ]),
   align: PropTypes.oneOf([

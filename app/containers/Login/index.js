@@ -24,7 +24,7 @@ import Button from '../../components/Button';
 import { useStyles } from './components/styled';
 import CONFIG from '../../config';
 import { API } from '../../constants/api';
-import { SPOTIFY } from '../../constants/config';
+import { SPOTIFY } from '../../constants/spotify';
 import { Typography } from '../../components/Typography';
 
 const { H5 } = Typography;
@@ -34,11 +34,10 @@ export function Login() {
 
   const classes = useStyles();
   const spotifyLoginClicked = () => {
-    const scope = 'user-read-private user-read-email';
     const clientID = process.env.CLIENT_ID;
     const params = {
       client_id: clientID,
-      scope,
+      scope: SPOTIFY.SCOPE.join(' '),
       response_type: 'code',
       redirect_uri: SPOTIFY.REDIRECT_URL,
     };
@@ -65,7 +64,7 @@ export function Login() {
             >
               <Box className={classes['icon-container']} />
             </Grid>
-            <H5 color="primaryPaper">
+            <H5 customColor="primaryPaper">
               <FormattedMessage {...messages.loginInfo} />
             </H5>
           </CardContent>

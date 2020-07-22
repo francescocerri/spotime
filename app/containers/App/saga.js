@@ -7,6 +7,7 @@ import { push } from 'connected-react-router';
 
 import messages from './messages';
 import log from '../../utils/logger';
+import { setInstanceKeyVal } from '../../utils/request';
 import { paths } from '../../routes/utils/paths';
 import {
   refreshTokenFailed,
@@ -52,6 +53,8 @@ export function* handleFailedRequest(action) {
 export function* getSpotifyToken({ payload: { code } }) {
   try {
     const tokenData = yield call(getToken, code);
+    const bearerToken = `Bearer ${tokenData.accessToken}`;
+    setInstanceKeyVal('Authorization', bearerToken);
     yield put(tokenSucceeded(tokenData));
     yield put(push(paths.home));
   } catch (ex) {

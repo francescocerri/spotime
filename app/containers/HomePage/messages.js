@@ -13,4 +13,8 @@ export default defineMessages({
     id: `${scope}.header`,
     defaultMessage: 'This is the HomePage container!',
   },
+  recommended: {
+    id: `${scope}.recommended`,
+    defaultMessage: 'Raccomandate per te',
+  },
 });

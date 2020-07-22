@@ -1,23 +1,28 @@
 import axios from 'axios';
 import CONFIG from '../config';
+import qs from 'qs';
 
-const headers = {
+const loginAuth = {
   Authorization: `Basic ${new Buffer(
     process.env.CLIENT_ID + ':' + process.env.CLIENT_SECRET,
   ).toString('base64')}`,
 };
+
 const instance = axios.create({
   baseURL: CONFIG.API.DOMAIN,
-  headers: {
-    ...headers,
-  },
+  paramsSerializer: (params) => qs.stringify(params, {arrayFormat: 'brackets'})
 });
+
 const instanceLogin = axios.create({
   baseURL: CONFIG.API.LOGIN_DOMAIN,
   headers: {
-    ...headers,
+    ...loginAuth,
   },
 });
+
+export const setInstanceKeyVal = (key, value) => {
+  instance.defaults.headers.common[key] = value;
+};
 
 /**
  * @param  {object} config - The configuration we want to pass to the request

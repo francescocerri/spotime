@@ -25,6 +25,7 @@ import reducer from './reducer';
 import saga from './saga';
 
 import Notification from '../../components/Notification/Loadable';
+import Header from '../../components/Header/Loadable';
 import Loader from '../../components/Loader';
 import GlobalStyle from '../../global-styles';
 import routes from '../../routes';
@@ -62,6 +63,7 @@ function App(props) {
   return (
     <div className={classes.root}>
       <Container maxWidth="xl" className={classes.container}>
+        <Header />
         <Grid className={classes['switch-container']}>
           {loading && <Loader />}
           <Switch>

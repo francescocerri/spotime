@@ -2,7 +2,7 @@ import { API } from '../../constants/api';
 import { stringify } from '../../utils/querystring';
 import { requestLogin } from '../../utils/request';
 import { parseToken } from './utils';
-import { SPOTIFY } from '../../constants/config';
+import { SPOTIFY } from '../../constants/spotify';
 
 export const getToken = code => {
   const params = {

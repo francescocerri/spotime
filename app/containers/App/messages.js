@@ -11,34 +11,34 @@ export const scope = 'app.containers.App';
 export default defineMessages({
   genericError: {
     id: `${scope}.genericError`,
-    defaultMessage: 'Error',
+    defaultMessage: 'Errore',
     title: {
       id: `${scope}.genericError.title`,
-      defaultMessage: 'Error',
+      defaultMessage: 'Errore',
     },
     message: {
       id: `${scope}.genericError.message`,
-      defaultMessage: 'The action could not be completed successfully',
+      defaultMessage: "L'azione non può essere completata correttamente",
     },
     validation: {
       id: `${scope}.genericError.validation`,
-      defaultMessage: 'Validation error',
+      defaultMessage: 'Errore di validazione',
     },
     somethingWrong: {
       id: `${scope}.genericError.somethingWrong`,
-      defaultMessage: 'Something wrong',
+      defaultMessage: 'Errore',
     },
     reloadPage: {
       id: `${scope}.genericError.reloadPage`,
-      defaultMessage: 'Please reload the page',
+      defaultMessage: 'Ricarica la pagina',
     },
     fetch: {
       id: `${scope}.genericError.fetch`,
-      defaultMessage: 'Error retrieving data',
+      defaultMessage: 'Errore nella ricezione dei dati',
     },
     export: {
       id: `${scope}.genericError.export`,
-      defaultMessage: 'Error exporting data',
+      defaultMessage: "Errore nell'export dei dati",
     },
   },
   tokenError: {
