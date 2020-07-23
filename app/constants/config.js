@@ -1,4 +1,10 @@
-export const COOKIE_NAME = 'spotime.auth';
+export const COOKIE = {
+  ACC_TOKEN: 'spotime.auth.accessToken',
+  REF_TOKEN: 'spotime.auth.refreshToken',
+  EXP_DATE: 'spotime.auth.expireDate',
+  EXP_IN: 'spotime.auth.expireIn',
+};
+
 export const DEFAULT_PAGINATION = {
   BOX: 25,
-}
+};

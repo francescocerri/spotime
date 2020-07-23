@@ -1,5 +1,6 @@
 import produce from 'immer';
-
+import { getCookie } from '../../utils/storage';
+import { COOKIE } from '../../constants/config';
 import {
   SET_GLOBAL_MESSAGE,
   RESET_GLOBAL_MESSAGE,
@@ -14,9 +15,9 @@ import {
 export const initialState = {
   notification: {},
   token: {
-    accessToken: '',
-    refreshToken: '',
-    expiresIn: null,
+    accessToken: getCookie(COOKIE.ACC_TOKEN),
+    refreshToken: getCookie(COOKIE.REF_TOKEN),
+    expiresIn: getCookie(COOKIE.EXP_IN),
   },
   loading: false,
 };

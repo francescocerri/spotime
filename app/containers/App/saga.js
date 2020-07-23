@@ -7,7 +7,7 @@ import { push } from 'connected-react-router';
 
 import messages from './messages';
 import log from '../../utils/logger';
-import { setInstanceKeyVal } from '../../utils/request';
+import { setAuthCookie, setRequestAuth } from './utils';
 import { paths } from '../../routes/utils/paths';
 import {
   refreshTokenFailed,
@@ -22,6 +22,11 @@ import {
   getToken,
   refreshTokenRequest,
 } from '../../models/authorization/services';
+
+function setAuthWithNewToken(tokenData) {
+  setRequestAuth(tokenData.accessToken);
+  setAuthCookie(tokenData);
+}
 
 export function* handleFailedRequest(action) {
   /**
@@ -53,8 +58,9 @@ export function* handleFailedRequest(action) {
 export function* getSpotifyToken({ payload: { code } }) {
   try {
     const tokenData = yield call(getToken, code);
-    const bearerToken = `Bearer ${tokenData.accessToken}`;
-    setInstanceKeyVal('Authorization', bearerToken);
+
+    yield call(setAuthWithNewToken, tokenData);
+
     yield put(tokenSucceeded(tokenData));
     yield put(push(paths.home));
   } catch (ex) {
@@ -69,7 +75,9 @@ export function* getSpotifyToken({ payload: { code } }) {
 export function* refreshSpotifyToken() {
   const { refreshToken } = yield select(makeSelectToken());
   try {
-    const tokenData = refreshTokenRequest(refreshToken);
+    const tokenData = yield call(refreshTokenRequest, refreshToken);
+
+    yield call(setAuthWithNewToken, { ...tokenData, refreshToken });
     yield put(refreshTokenSucceeded(tokenData));
   } catch (ex) {
     log.error(ex);

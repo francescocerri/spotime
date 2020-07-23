@@ -18,8 +18,6 @@ import reducer from './reducer';
 import saga from './saga';
 
 import { getUserCodeByLocation } from './utils';
-import { setCookie } from '../../utils/storage';
-import { COOKIE_NAME } from '../../constants/config';
 
 export function Authorization(props) {
   useInjectReducer({ key: 'authorization', reducer });
@@ -28,10 +26,7 @@ export function Authorization(props) {
 
   useEffect(() => {
     const userCode = getUserCodeByLocation();
-    if (userCode) {
-      setCookie({ name: COOKIE_NAME, value: userCode });
-      getToken(userCode);
-    }
+    if (userCode) getToken(userCode);
   }, []);
 
   return <div />;

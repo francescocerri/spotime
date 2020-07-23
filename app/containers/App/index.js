@@ -17,6 +17,7 @@ import { useInjectReducer } from 'utils/injectReducer';
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
+import moment from 'moment';
 
 import { useStyles } from './components/styled';
 import { getNotification, makeSelectLoading, makeSelectToken } from './selectors';
@@ -29,8 +30,11 @@ import Header from '../../components/Header/Loadable';
 import Loader from '../../components/Loader';
 import GlobalStyle from '../../global-styles';
 import routes from '../../routes';
+import { setRequestAuth } from './utils';
+import { getCookie } from '../../utils/storage';
+import { COOKIE } from '../../constants/config';
 
-const TIME_MINOR = 300; // 5 minute
+const MINUTE_REFRESH_TOKEN = 5; // 5 minute
 function App(props) {
   useInjectReducer({ key: 'app', reducer });
   useInjectSaga({ key: 'app', saga });
@@ -49,12 +53,18 @@ function App(props) {
   useEffect(() => {
     let timer = null;
     if (token.expiresIn) {
-      const timeNewToken = token.expiresIn - TIME_MINOR;
-      const timeNewTokenMillisecond = timeNewToken * 1000;
-      timer = setTimeout(() => {
-        refreshToken();
-      }, timeNewTokenMillisecond);
+      const tokenExpiration = getCookie(COOKIE.EXP_DATE);
+      const minutesFromNow = moment(tokenExpiration).diff(moment(), 'minutes');
+      if (minutesFromNow < MINUTE_REFRESH_TOKEN) refreshToken();
+      else {
+        const timeNewToken = minutesFromNow - MINUTE_REFRESH_TOKEN;
+        const timeNewTokenMillisecond = timeNewToken * 60000;
+        timer = setTimeout(() => {
+          refreshToken();
+        }, timeNewTokenMillisecond);
+      }
     }
+    if (token.accessToken) setRequestAuth(token.accessToken);
     return () => {
       if (timer) clearTimeout(timer);
     };
