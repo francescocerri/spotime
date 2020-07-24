@@ -17,7 +17,7 @@ export const initialState = {
   token: {
     accessToken: getCookie(COOKIE.ACC_TOKEN),
     refreshToken: getCookie(COOKIE.REF_TOKEN),
-    expiresIn: getCookie(COOKIE.EXP_IN),
+    expiresIn: getCookie(COOKIE.EXP_IN) ? parseInt(getCookie(COOKIE.EXP_IN), 10) : null,
   },
   loading: false,
 };

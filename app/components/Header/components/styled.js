@@ -7,4 +7,10 @@ export const useStyles = makeStyles(theme => ({
     borderBottom: `1px solid ${theme.palette.grey[300]}`,
     backgroundColor: theme.palette.grey[300],
   },
+  logo: {
+    width: '10rem',
+  },
+  profile: {
+    marginLeft: 'auto',
+  },
 }));

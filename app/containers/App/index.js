@@ -9,7 +9,7 @@
 
 import React, { memo, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Switch, Route, withRouter } from 'react-router-dom';
+import { Switch, Route, withRouter, useHistory } from 'react-router-dom';
 import { Container, Grid } from '@material-ui/core';
 
 import { useInjectSaga } from 'utils/injectSaga';
@@ -33,6 +33,7 @@ import routes from '../../routes';
 import { setRequestAuth } from './utils';
 import { getCookie } from '../../utils/storage';
 import { COOKIE } from '../../constants/config';
+import { paths } from '../../routes/utils/paths';
 
 const MINUTE_REFRESH_TOKEN = 5; // 5 minute
 function App(props) {
@@ -44,14 +45,20 @@ function App(props) {
     token,
     refreshToken,
     loading,
+    location,
   } = props;
   const classes = useStyles(props);
+  const history = useHistory();
 
   /**
    * Refresh token before expired
    */
   useEffect(() => {
     let timer = null;
+    // auth is not protected route
+    if (!token.accessToken && location.pathname !== paths.auth) history.push(paths.login);
+    else setRequestAuth(token.accessToken);
+
     if (token.expiresIn) {
       const tokenExpiration = getCookie(COOKIE.EXP_DATE);
       const minutesFromNow = moment(tokenExpiration).diff(moment(), 'minutes');
@@ -64,7 +71,6 @@ function App(props) {
         }, timeNewTokenMillisecond);
       }
     }
-    if (token.accessToken) setRequestAuth(token.accessToken);
     return () => {
       if (timer) clearTimeout(timer);
     };
@@ -73,7 +79,7 @@ function App(props) {
   return (
     <div className={classes.root}>
       <Container maxWidth="xl" className={classes.container}>
-        <Header />
+        <Header token={token} />
         <Grid className={classes['switch-container']}>
           {loading && <Loader />}
           <Switch>
@@ -107,6 +113,7 @@ function App(props) {
 
 App.propTypes = {
   notification: PropTypes.object,
+  location: PropTypes.object,
   resetNotification: PropTypes.func,
   loading: PropTypes.bool,
   token: PropTypes.shape({

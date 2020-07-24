@@ -5,28 +5,35 @@
  */
 import produce from 'immer';
 import {
-  RECOMMENDATIONS_FAILED,
-  RECOMMENDATIONS_REQUESTED,
-  RECOMMENDATIONS_SUCCEEDED,
+  HOMEPAGE_INFO_REQUESTED,
+  HOMEPAGE_INFO_SUCCEEDED,
+  HOMEPAGE_INFO_FAILED
 } from './constants';
 
 export const initialState = {
   loading: false,
-  recommendations: [],
+  data: {
+    recommendations: [],
+    playlists: [],
+    savedAlbums: [],
+    savedTracks: [],
+    topArtists: [],
+    topTracks: [],
+  },
 };
 
 /* eslint-disable default-case, no-param-reassign */
 const homePageReducer = (state = initialState, action) =>
   produce(state, (draft) => {
     switch (action.type) {
-      case RECOMMENDATIONS_REQUESTED:
+      case HOMEPAGE_INFO_REQUESTED:
         draft.loading = true;
         break;
-      case RECOMMENDATIONS_SUCCEEDED:
+      case HOMEPAGE_INFO_SUCCEEDED:
         draft.loading = false;
-        draft.recommendations = action.payload.data;
+        draft.data = action.payload.data;
         break;
-      case RECOMMENDATIONS_FAILED:
+      case HOMEPAGE_INFO_FAILED:
         draft.loading = false;
         break;
     }

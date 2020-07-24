@@ -17,11 +17,11 @@ import { useInjectReducer } from 'utils/injectReducer';
 import makeSelectHomePage,
 {
   makeSelectLoading,
-  makeSelectRecommendations,
+  makeSelectData,
 } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import { recommendationsRequested } from './actions';
+import { homepageInfoRequested } from './actions';
 
 import messages from './messages';
 import Loader from '../../components/Loader';
@@ -30,10 +30,11 @@ export function HomePage(props) {
   useInjectReducer({ key: 'homePage', reducer });
   useInjectSaga({ key: 'homePage', saga });
 
-  const { getRecommendations, recommendations, loading } = props;
-  // GET HOMEPAGE DATA
+  const { getHomepageInfo, loading, data } = props;
+  const { recommendations, playlists, savedAlbums, savedTracks, topArtists, topTracks } = data;
+
   useEffect(() => {
-    getRecommendations();
+    getHomepageInfo();
   }, []);
 
   return (
@@ -50,20 +51,27 @@ export function HomePage(props) {
 HomePage.propTypes = {
   dispatch: PropTypes.func.isRequired,
   loading: PropTypes.bool,
-  recommendations: PropTypes.array,
-  getRecommendations: PropTypes.func,
+  getHomepageInfo: PropTypes.func,
+  data: PropTypes.shape({
+    recommendations: PropTypes.array,
+    playlists: PropTypes.array,
+    savedAlbums: PropTypes.array,
+    savedTracks: PropTypes.array,
+    topArtists: PropTypes.array,
+    topTracks: PropTypes.array,
+  }),
 };
 
 const mapStateToProps = createStructuredSelector({
   homePage: makeSelectHomePage(),
   loading: makeSelectLoading(),
-  recommendations: makeSelectRecommendations(),
+  data: makeSelectData(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
-    getRecommendations: () => dispatch(recommendationsRequested()),
+    getHomepageInfo: () => dispatch(homepageInfoRequested()),
   };
 }
 

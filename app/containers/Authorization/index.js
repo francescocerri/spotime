@@ -22,10 +22,10 @@ import { getUserCodeByLocation } from './utils';
 export function Authorization(props) {
   useInjectReducer({ key: 'authorization', reducer });
   useInjectSaga({ key: 'authorization', saga });
-  const { getToken } = props;
+  const { getToken, location } = props;
 
   useEffect(() => {
-    const userCode = getUserCodeByLocation();
+    const userCode = getUserCodeByLocation(location);
     if (userCode) getToken(userCode);
   }, []);
 
@@ -34,7 +34,8 @@ export function Authorization(props) {
 
 Authorization.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  getToken: PropTypes.func
+  getToken: PropTypes.func,
+  location: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({

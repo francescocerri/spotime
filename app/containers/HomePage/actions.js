@@ -6,9 +6,9 @@
 
 import {
   DEFAULT_ACTION,
-  RECOMMENDATIONS_FAILED,
-  RECOMMENDATIONS_REQUESTED,
-  RECOMMENDATIONS_SUCCEEDED,
+  HOMEPAGE_INFO_REQUESTED,
+  HOMEPAGE_INFO_FAILED,
+  HOMEPAGE_INFO_SUCCEEDED,
 } from './constants';
 
 export function defaultAction() {
@@ -17,29 +17,27 @@ export function defaultAction() {
   };
 }
 
-// TOKEN ACTIONS
-
-export function recommendationsRequested() {
+export function homepageInfoSucceeded(data) {
   return {
-    type: RECOMMENDATIONS_REQUESTED,
-  };
-}
-
-export function recommendationsSucceeded(data) {
-  return {
-    type: RECOMMENDATIONS_SUCCEEDED,
+    type: HOMEPAGE_INFO_SUCCEEDED,
     payload: {
       data,
     },
   };
 }
 
-export function recommendationsFailed(ex, notification) {
+export function homepageInfoFailed(ex, notification) {
   return {
-    type: RECOMMENDATIONS_FAILED,
+    type: HOMEPAGE_INFO_FAILED,
     payload: {
       notification,
       ex,
     },
+  };
+}
+
+export function homepageInfoRequested() {
+  return {
+    type: HOMEPAGE_INFO_REQUESTED,
   };
 }

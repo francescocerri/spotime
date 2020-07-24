@@ -11,5 +11,5 @@ export const theme = createMuiTheme({
 });
 
 export const customThemeInfo = {
-  HEADER_HEIGHT: '3.5rem',
+  HEADER_HEIGHT: '4rem',
 };

@@ -1,6 +1,6 @@
 import axios from 'axios';
-import CONFIG from '../config';
 import qs from 'qs';
+import CONFIG from '../config';
 
 const loginAuth = {
   Authorization: `Basic ${new Buffer(

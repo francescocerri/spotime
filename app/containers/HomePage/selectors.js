@@ -21,21 +21,21 @@ const makeSelectHomePage = () =>
     substate => substate,
   );
 
-const makeSelectRecommendations = () =>
-  createSelector(
-    selectHomePageDomain,
-    substate => substate.recommendations,
-  );
-
 const makeSelectLoading = () =>
   createSelector(
     selectHomePageDomain,
-    substate => substate.loding,
+    substate => substate.loading,
   );
+const makeSelectData = () =>
+  createSelector(
+    selectHomePageDomain,
+    substate => substate.data,
+  );
+
 
 export default makeSelectHomePage;
 export {
   selectHomePageDomain,
   makeSelectLoading,
-  makeSelectRecommendations,
+  makeSelectData
 };

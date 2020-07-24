@@ -20,4 +20,7 @@ export const SPOTIFY = {
     DANCE: 'dance',
     HIP_HOP: 'hip-hop',
   },
+  TIME_RANGE: {
+    MEDIUM: 'medium_term',
+  },
 };
