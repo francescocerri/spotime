@@ -24,3 +24,8 @@ export const SPOTIFY = {
     MEDIUM: 'medium_term',
   },
 };
+
+export const KEYS = {
+  ARTIST : 'artist',
+  TRACK : 'track',
+}

@@ -1,22 +1,26 @@
 import { makeStyles } from '@material-ui/core/styles';
 import Chitarra from '../../../images/Chitarra2.jpg';
 import Spotify from '../../../images/spotify.png';
+import { customThemeInfo } from '../../../theme';
 
-export const useStyles = makeStyles(theme =>({
-  'login-container': {
+export const useStyles = makeStyles(theme => ({
+  loginWrapper: {
+    height: `calc(100vh - ${customThemeInfo.HEADER_HEIGHT})`,
+  },
+  loginContainer: {
     backgroundImage: `url(${Chitarra})`,
     height: '100%',
   },
-  'login-item': {
+  loginItem: {
     width: '25rem',
   },
-  'spotify-content': {
+  spotifyContent: {
     padding: '1.5rem',
   },
-  'card-content': {
+  cardContent: {
     textAlign: 'center',
   },
-  'icon-container': {
+  iconContainer: {
     height: '5rem',
     width: '5rem',
     backgroundRepeat: 'no-repeat, repeat',
@@ -24,10 +28,10 @@ export const useStyles = makeStyles(theme =>({
     backgroundSize: 'cover',
     backgroundImage: `url(${Spotify})`,
   },
-  'lock-icon': {
+  lockIcon: {
     fontSize: '5rem',
   },
-  'button-login': {
+  buttonLogin: {
     width: '100%',
-  }
+  },
 }));

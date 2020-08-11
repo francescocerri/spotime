@@ -17,4 +17,12 @@ export default defineMessages({
     id: `${scope}.recommended`,
     defaultMessage: 'Raccomandate per te',
   },
+  topTracks: {
+    id: `${scope}.recommended`,
+    defaultMessage: 'Brani più ascoltati recentemente',
+  },
+  topArtists: {
+    id: `${scope}.recommended`,
+    defaultMessage: 'Artisti preferiti',
+  },
 });

@@ -6,5 +6,5 @@ export const COOKIE = {
 };
 
 export const DEFAULT_PAGINATION = {
-  BOX: 25,
+  BOX: 12,
 };

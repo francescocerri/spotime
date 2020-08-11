@@ -47,48 +47,50 @@ export function Login() {
   };
 
   return (
-    <Grid
-      container
-      justify="center"
-      alignItems="center"
-      className={classes['login-container']}
-    >
-      <Grid item className={classes['login-item']}>
-        <Card raised>
-          <CardContent className={classes['card-content']}>
-            <Grid
-              container
-              justify="center"
-              alignItems="center"
-              className={classes['spotify-content']}
-            >
-              <Box className={classes['icon-container']} />
-            </Grid>
-            <H5 customColor="primaryPaper">
-              <FormattedMessage {...messages.loginInfo} />
-            </H5>
-          </CardContent>
-          <CardActionArea>
-            <CardActions >
+    <div className={classes.loginWrapper}>
+      <Grid
+        container
+        justify="center"
+        alignItems="center"
+        className={classes.loginContainer}
+      >
+        <Grid item className={classes.loginItem}>
+          <Card raised>
+            <CardContent className={classes.cardContent}>
               <Grid
                 container
                 justify="center"
                 alignItems="center"
+                className={classes.spotifyContent}
               >
-                <Button
-                  variant="contained"
-                  color="primary"
-                  className={classes['button-login']}
-                  onClick={spotifyLoginClicked}
-                >
-                  <FormattedMessage {...messages.login} />
-                </Button>
+                <Box className={classes.iconContainer} />
               </Grid>
-            </CardActions>
-          </CardActionArea>
-        </Card>
+              <H5 customColor="primaryPaper">
+                <FormattedMessage {...messages.loginInfo} />
+              </H5>
+            </CardContent>
+            <CardActionArea>
+              <CardActions >
+                <Grid
+                  container
+                  justify="center"
+                  alignItems="center"
+                >
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    className={classes.buttonLogin}
+                    onClick={spotifyLoginClicked}
+                  >
+                    <FormattedMessage {...messages.login} />
+                  </Button>
+                </Grid>
+              </CardActions>
+            </CardActionArea>
+          </Card>
+        </Grid>
       </Grid>
-    </Grid>
+    </div>
   );
 }
 

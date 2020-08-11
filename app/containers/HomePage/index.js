@@ -25,6 +25,8 @@ import { homepageInfoRequested } from './actions';
 
 import messages from './messages';
 import Loader from '../../components/Loader';
+import { useStyles } from './components/styled';
+import Boxs from '../../components/Boxs/Loadable';
 
 export function HomePage(props) {
   useInjectReducer({ key: 'homePage', reducer });
@@ -32,18 +34,26 @@ export function HomePage(props) {
 
   const { getHomepageInfo, loading, data } = props;
   const { recommendations, playlists, savedAlbums, savedTracks, topArtists, topTracks } = data;
-
+  const classes = useStyles();
   useEffect(() => {
     getHomepageInfo();
   }, []);
 
   return (
-    <div>
+    <div className={classes.homePageContainer}>
       <Helmet>
         <title>HomePage</title>
         <meta name="description" content="Description of HomePage" />
       </Helmet>
       {loading && <Loader />}
+      <Boxs
+        label={<FormattedMessage {...messages.topTracks} />}
+        data={topTracks}
+      />
+      <Boxs
+        label={<FormattedMessage {...messages.topArtists} />}
+        data={topArtists}
+      />
     </div>
   );
 }

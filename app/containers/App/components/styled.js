@@ -9,7 +9,7 @@ export const useStyles = makeStyles(theme =>({
   },
   root: {
     background: theme.palette.background.default,
-    height: '100vh',
+    minHeight: '100vh',
   },
   'switch-container': ({ location: { pathname } }) => ({
     padding: pathname === paths.login ? '0' : '1rem 2.5rem',
