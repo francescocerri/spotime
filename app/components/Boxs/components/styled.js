@@ -44,7 +44,7 @@ export const useStyles = makeStyles(theme =>({
     fontSize: '.75rem',
   },
   gridContainer: {
-    padding: '1rem',
+    padding: '1rem 2.5rem',
   },
   gridSingleContent: {
     padding: '.5rem 0',
@@ -72,5 +72,15 @@ export const useStyles = makeStyles(theme =>({
   titleCenter: {
     color: '#fff',
     textShadow: '#000 1px 0 10px',
+  },
+  navigateButton: {
+    position: 'absolute',
+    // top: '50%',
+  },
+  navigateButtonPrev: {
+    left: '1.5rem',
+  },
+  navigateButtonAfter: {
+    right: '1.5rem',
   },
 }));

@@ -8,9 +8,14 @@ export const getInfoByType = props => {
       } = props;
       return { images, albumName, artist: artists[0].name, name };
     }
-    case 'artist': {
+    case 'artist':
+    case 'playlist': {
       const { name, images } = props;
       return { name, images };
+    }
+    case 'album': {
+      const { name, images, artists } = props;
+      return { name, images, artist: artists[0].name };
     }
     default:
       return {};

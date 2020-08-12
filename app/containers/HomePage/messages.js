@@ -15,14 +15,26 @@ export default defineMessages({
   },
   recommended: {
     id: `${scope}.recommended`,
-    defaultMessage: 'Raccomandate per te',
+    defaultMessage: 'Raccomandati per te',
   },
   topTracks: {
-    id: `${scope}.recommended`,
+    id: `${scope}.topTracks`,
     defaultMessage: 'Brani più ascoltati recentemente',
   },
   topArtists: {
-    id: `${scope}.recommended`,
+    id: `${scope}.topArtists`,
     defaultMessage: 'Artisti preferiti',
+  },
+  savedTracks: {
+    id: `${scope}.savedTracks`,
+    defaultMessage: 'Brani salvati',
+  },
+  savedAlbums: {
+    id: `${scope}.savedAlbums`,
+    defaultMessage: 'Album salvati',
+  },
+  yourPlaylist: {
+    id: `${scope}.yourPlaylist`,
+    defaultMessage: 'Le tue Playlist',
   },
 });

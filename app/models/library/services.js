@@ -1,6 +1,6 @@
 import { API } from '../../constants/api';
 import request from '../../utils/request';
-import { parseLibrary } from './utils';
+import { parseTrackLibrary, parseAlbumLibrary } from './utils';
 import { DEFAULT_PAGINATION } from '../../constants/config';
 import { SPOTIFY } from '../../constants/spotify';
 
@@ -13,7 +13,7 @@ export const getSavedAlbums = () => {
       markets: SPOTIFY.MARKETS.ITALY,
     },
   };
-  return request(params).then(data => parseLibrary(data));
+  return request(params).then(data => parseAlbumLibrary(data));
 };
 
 export const getSavedTracks = () => {
@@ -25,5 +25,5 @@ export const getSavedTracks = () => {
       markets: SPOTIFY.MARKETS.ITALY,
     },
   };
-  return request(params).then(data => parseLibrary(data));
+  return request(params).then(data => parseTrackLibrary(data));
 };

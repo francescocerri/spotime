@@ -51,8 +51,24 @@ export function HomePage(props) {
         data={topTracks}
       />
       <Boxs
+        label={<FormattedMessage {...messages.yourPlaylist} />}
+        data={playlists}
+      />
+      <Boxs
         label={<FormattedMessage {...messages.topArtists} />}
         data={topArtists}
+      />
+      <Boxs
+        label={<FormattedMessage {...messages.savedTracks} />}
+        data={savedTracks}
+      />
+      <Boxs
+        label={<FormattedMessage {...messages.savedAlbums} />}
+        data={savedAlbums}
+      />
+      <Boxs
+        label={<FormattedMessage {...messages.recommended} />}
+        data={recommendations}
       />
     </div>
   );
@@ -63,12 +79,12 @@ HomePage.propTypes = {
   loading: PropTypes.bool,
   getHomepageInfo: PropTypes.func,
   data: PropTypes.shape({
-    recommendations: PropTypes.array,
-    playlists: PropTypes.array,
-    savedAlbums: PropTypes.array,
-    savedTracks: PropTypes.array,
-    topArtists: PropTypes.array,
-    topTracks: PropTypes.array,
+    recommendations: PropTypes.object,
+    playlists: PropTypes.object,
+    savedAlbums: PropTypes.object,
+    savedTracks: PropTypes.object,
+    topArtists: PropTypes.object,
+    topTracks: PropTypes.object,
   }),
 };
 

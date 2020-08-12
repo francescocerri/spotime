@@ -5,7 +5,7 @@ import { getInfoByType } from '../../utils';
 
 function Box(props) {
   const classes = useStyles(props);
-  const { images, albumName, artist, name } = getInfoByType(props);
+  const { images, name } = getInfoByType(props);
   const image = images[1].url;
 
   return (

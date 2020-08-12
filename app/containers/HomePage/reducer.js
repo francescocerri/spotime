@@ -13,12 +13,12 @@ import {
 export const initialState = {
   loading: false,
   data: {
-    recommendations: [],
-    playlists: [],
-    savedAlbums: [],
-    savedTracks: [],
-    topArtists: [],
-    topTracks: [],
+    recommendations: {},
+    playlists: {},
+    savedAlbums: {},
+    savedTracks: {},
+    topArtists: {},
+    topTracks: {},
   },
 };
 
