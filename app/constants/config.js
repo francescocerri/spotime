@@ -8,3 +8,8 @@ export const COOKIE = {
 export const DEFAULT_PAGINATION = {
   BOX: 12,
 };
+
+export const PAGINATION_KEY = {
+  PREV: 'prev',
+  NEXT: 'next',
+}

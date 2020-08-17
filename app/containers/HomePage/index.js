@@ -21,19 +21,30 @@ import makeSelectHomePage,
 } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import { homepageInfoRequested } from './actions';
+import { homepageInfoRequested, updateDataRequested } from './actions';
 
 import messages from './messages';
 import Loader from '../../components/Loader';
 import { useStyles } from './components/styled';
 import Boxs from '../../components/Boxs/Loadable';
+import { API_TYPE } from '../../constants/spotify';
 
 export function HomePage(props) {
   useInjectReducer({ key: 'homePage', reducer });
   useInjectSaga({ key: 'homePage', saga });
 
-  const { getHomepageInfo, loading, data } = props;
+  const { getHomepageInfo, loading, data, updateData } = props;
   const { recommendations, playlists, savedAlbums, savedTracks, topArtists, topTracks } = data;
+
+  const boxs = [
+    { title: <FormattedMessage {...messages.topTracks} />, data: topTracks, type: API_TYPE.TOP_TRACKS },
+    { title: <FormattedMessage {...messages.yourPlaylist} />, data: playlists, type: API_TYPE.PLAYLIST },
+    { title: <FormattedMessage {...messages.topArtists} />, data: topArtists, type: API_TYPE.TOP_ARTISTS },
+    { title: <FormattedMessage {...messages.savedTracks} />, data: savedTracks, type: API_TYPE.SAVED_TRACKS },
+    { title: <FormattedMessage {...messages.savedAlbums} />, data: savedAlbums, type: API_TYPE.SAVED_ALBUMS },
+    { title: <FormattedMessage {...messages.recommended} />, data: recommendations, type: API_TYPE.RECOMMENDATIONS },
+  ];
+
   const classes = useStyles();
   useEffect(() => {
     getHomepageInfo();
@@ -46,30 +57,15 @@ export function HomePage(props) {
         <meta name="description" content="Description of HomePage" />
       </Helmet>
       {loading && <Loader />}
-      <Boxs
-        label={<FormattedMessage {...messages.topTracks} />}
-        data={topTracks}
-      />
-      <Boxs
-        label={<FormattedMessage {...messages.yourPlaylist} />}
-        data={playlists}
-      />
-      <Boxs
-        label={<FormattedMessage {...messages.topArtists} />}
-        data={topArtists}
-      />
-      <Boxs
-        label={<FormattedMessage {...messages.savedTracks} />}
-        data={savedTracks}
-      />
-      <Boxs
-        label={<FormattedMessage {...messages.savedAlbums} />}
-        data={savedAlbums}
-      />
-      <Boxs
-        label={<FormattedMessage {...messages.recommended} />}
-        data={recommendations}
-      />
+      {boxs.map(box => (
+        <Boxs
+          key={box.type}
+          label={box.title}
+          data={box.data}
+          type={box.type}
+          updateData={updateData}
+        />
+      ))}
     </div>
   );
 }
@@ -78,6 +74,7 @@ HomePage.propTypes = {
   dispatch: PropTypes.func.isRequired,
   loading: PropTypes.bool,
   getHomepageInfo: PropTypes.func,
+  updateData: PropTypes.func,
   data: PropTypes.shape({
     recommendations: PropTypes.object,
     playlists: PropTypes.object,
@@ -98,6 +95,7 @@ function mapDispatchToProps(dispatch) {
   return {
     dispatch,
     getHomepageInfo: () => dispatch(homepageInfoRequested()),
+    updateData: (key, pagination, typePagination) => dispatch(updateDataRequested(key, pagination, typePagination)),
   };
 }
 

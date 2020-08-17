@@ -28,4 +28,13 @@ export const SPOTIFY = {
 export const KEYS = {
   ARTIST : 'artist',
   TRACK : 'track',
-}
+};
+
+export const API_TYPE = {
+  TOP_TRACKS: 'topTracks',
+  PLAYLIST: 'playlists',
+  TOP_ARTISTS: 'topArtists',
+  SAVED_TRACKS: 'savedTracks',
+  SAVED_ALBUMS: 'savedAlbums',
+  RECOMMENDATIONS: 'recommendations',
+};

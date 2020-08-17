@@ -7,7 +7,7 @@ import produce from 'immer';
 import {
   HOMEPAGE_INFO_REQUESTED,
   HOMEPAGE_INFO_SUCCEEDED,
-  HOMEPAGE_INFO_FAILED
+  HOMEPAGE_INFO_FAILED, UPDATE_DATA_SUCCEEDED,
 } from './constants';
 
 export const initialState = {
@@ -35,6 +35,9 @@ const homePageReducer = (state = initialState, action) =>
         break;
       case HOMEPAGE_INFO_FAILED:
         draft.loading = false;
+        break;
+      case UPDATE_DATA_SUCCEEDED:
+        draft.data[action.payload.key] = action.payload.newData;
         break;
     }
   });

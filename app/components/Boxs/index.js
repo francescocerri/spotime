@@ -13,12 +13,13 @@ import NavigateAfterIcon from '@material-ui/icons/NavigateNext';
 import { Typography } from '../Typography/index';
 import { useStyles } from './components/styled';
 import { KEYS } from '../../constants/spotify';
+import { PAGINATION_KEY } from '../../constants/config';
 import Box from './components/Square/Box';
 import Round from './components/Round/Box';
 
 const { H5 } = Typography;
 function Boxs(props) {
-  const { label, data } = props;
+  const { label, data, updateData, type } = props;
   const { items, pagination = {} } = data;
   const classes = useStyles();
   return (
@@ -40,6 +41,7 @@ function Boxs(props) {
             className={`${classes.navigateButton} ${
               classes.navigateButtonPrev
             }`}
+            onClick={updateData.bind(this, type, pagination, PAGINATION_KEY.PREV)}
           >
             <NavigateBeforeIcon />
           </IconButton>
@@ -59,6 +61,7 @@ function Boxs(props) {
             className={`${classes.navigateButton} ${
               classes.navigateButtonAfter
             }`}
+            onClick={updateData.bind(this, type, pagination, PAGINATION_KEY.NEXT)}
           >
             <NavigateAfterIcon />
           </IconButton>
@@ -70,6 +73,8 @@ function Boxs(props) {
 
 Boxs.propTypes = {
   label: PropTypes.object,
+  updateData: PropTypes.func,
+  type: PropTypes.string,
   data: PropTypes.shape({
     items: PropTypes.array,
     pagination: PropTypes.shape({
