@@ -10,6 +10,7 @@ import {
   TOKEN_FAILED,
   TOKEN_REQUESTED,
   TOKEN_SUCCEEDED,
+  SET_SPOTIFY_URI,
 } from './constants';
 
 export const initialState = {
@@ -19,6 +20,7 @@ export const initialState = {
     refreshToken: getCookie(COOKIE.REF_TOKEN),
     expiresIn: getCookie(COOKIE.EXP_IN) ? parseInt(getCookie(COOKIE.EXP_IN), 10) : null,
   },
+  spotifyUri: '',
   loading: false,
 };
 
@@ -47,6 +49,9 @@ const languageProviderReducer = (state = initialState, action) =>
       case TOKEN_FAILED:
       case REFRESH_TOKEN_FAILED:
         draft.loading = false;
+        break;
+      case SET_SPOTIFY_URI:
+        draft.spotifyUri = action.payload.spotifyUri;
         break;
     }
   });

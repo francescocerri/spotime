@@ -38,3 +38,8 @@ export const API_TYPE = {
   SAVED_ALBUMS: 'savedAlbums',
   RECOMMENDATIONS: 'recommendations',
 };
+
+export const SPOTIFY_URI = {
+  ORIGINAL: 'https://open.spotify.com/',
+  REPLACED: 'https://open.spotify.com/embed/',
+};

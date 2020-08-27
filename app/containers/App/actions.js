@@ -7,6 +7,7 @@ import {
   TOKEN_FAILED,
   TOKEN_REQUESTED,
   TOKEN_SUCCEEDED,
+  SET_SPOTIFY_URI,
 } from './constants';
 
 export function setGlobalMessage(messageProps) {
@@ -73,6 +74,15 @@ export function refreshTokenFailed(ex, notification) {
     payload: {
       notification,
       ex,
+    },
+  };
+}
+
+export function setSpotifyUri(spotifyUri) {
+  return {
+    type: SET_SPOTIFY_URI,
+    payload: {
+      spotifyUri,
     },
   };
 }

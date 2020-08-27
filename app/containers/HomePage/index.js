@@ -22,6 +22,7 @@ import makeSelectHomePage,
 import reducer from './reducer';
 import saga from './saga';
 import { homepageInfoRequested, updateDataRequested } from './actions';
+import { setSpotifyUri } from '../App/actions';
 
 import messages from './messages';
 import Loader from '../../components/Loader';
@@ -33,7 +34,7 @@ export function HomePage(props) {
   useInjectReducer({ key: 'homePage', reducer });
   useInjectSaga({ key: 'homePage', saga });
 
-  const { getHomepageInfo, loading, data, updateData } = props;
+  const { getHomepageInfo, loading, data, updateData, playSong } = props;
   const { recommendations, playlists, savedAlbums, savedTracks, topArtists, topTracks } = data;
 
   const boxs = [
@@ -64,6 +65,7 @@ export function HomePage(props) {
           data={box.data}
           type={box.type}
           updateData={updateData}
+          playSong={playSong}
         />
       ))}
     </div>
@@ -74,6 +76,7 @@ HomePage.propTypes = {
   dispatch: PropTypes.func.isRequired,
   loading: PropTypes.bool,
   getHomepageInfo: PropTypes.func,
+  playSong: PropTypes.func,
   updateData: PropTypes.func,
   data: PropTypes.shape({
     recommendations: PropTypes.object,
@@ -96,6 +99,7 @@ function mapDispatchToProps(dispatch) {
     dispatch,
     getHomepageInfo: () => dispatch(homepageInfoRequested()),
     updateData: (key, pagination, typePagination) => dispatch(updateDataRequested(key, pagination, typePagination)),
+    playSong: (spotifyUri) => dispatch(setSpotifyUri(spotifyUri)),
   };
 }
 

@@ -20,7 +20,7 @@ import { compose } from 'redux';
 import moment from 'moment';
 
 import { useStyles } from './components/styled';
-import { getNotification, makeSelectLoading, makeSelectToken } from './selectors';
+import { getNotification, makeSelectLoading, makeSelectToken, makeSpotifyUri } from './selectors';
 import { resetGlobalMessage, refreshTokenRequested } from './actions';
 import reducer from './reducer';
 import saga from './saga';
@@ -28,6 +28,7 @@ import saga from './saga';
 import Notification from '../../components/Notification/Loadable';
 import Header from '../../components/Header/Loadable';
 import Loader from '../../components/Loader';
+import Footer from '../../components/Footer/Loadable';
 import GlobalStyle from '../../global-styles';
 import routes from '../../routes';
 import { setRequestAuth } from './utils';
@@ -46,6 +47,7 @@ function App(props) {
     refreshToken,
     loading,
     location,
+    spotifyUri,
   } = props;
   const classes = useStyles(props);
   const history = useHistory();
@@ -104,6 +106,7 @@ function App(props) {
           { notification && !!Object.keys(notification).length &&
             <Notification {...notification} closeNotification={resetNotification} />
           }
+          <Footer spotifyUri={spotifyUri} />
         </Grid>
         <GlobalStyle />
       </Container>
@@ -116,6 +119,7 @@ App.propTypes = {
   location: PropTypes.object,
   resetNotification: PropTypes.func,
   loading: PropTypes.bool,
+  spotifyUri: PropTypes.string,
   token: PropTypes.shape({
     accessToken: PropTypes.string,
     refreshToken: PropTypes.string,
@@ -127,6 +131,7 @@ const mapStateToProps = createStructuredSelector({
   notification: getNotification(),
   loading: makeSelectLoading(),
   token: makeSelectToken(),
+  spotifyUri: makeSpotifyUri(),
 });
 
 function mapDispatchToProps(dispatch) {

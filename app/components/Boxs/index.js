@@ -19,9 +19,10 @@ import Round from './components/Round/Box';
 
 const { H5 } = Typography;
 function Boxs(props) {
-  const { label, data, updateData, type } = props;
+  const { label, data, updateData, type, playSong } = props;
   const { items, pagination = {} } = data;
   const classes = useStyles();
+
   return (
     <div>
       <H5>
@@ -50,9 +51,9 @@ function Boxs(props) {
           Array.isArray(items) &&
           items.map(info =>
             info.type === KEYS.ARTIST ? (
-              <Round key={info.id} {...info} />
+              <Round key={info.id} {...info} playSong={playSong} />
             ) : (
-              <Box key={info.id} {...info} />
+              <Box key={info.id} {...info} playSong={playSong} />
             ),
           )}
         {pagination.next && (
@@ -74,6 +75,7 @@ function Boxs(props) {
 Boxs.propTypes = {
   label: PropTypes.object,
   updateData: PropTypes.func,
+  playSong: PropTypes.func,
   type: PropTypes.string,
   data: PropTypes.shape({
     items: PropTypes.array,

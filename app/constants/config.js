@@ -12,4 +12,9 @@ export const DEFAULT_PAGINATION = {
 export const PAGINATION_KEY = {
   PREV: 'prev',
   NEXT: 'next',
-}
+};
+
+export const FRAME_CONFIG = {
+  HEIGHT: '80',
+  WIDTH: '100%',
+};

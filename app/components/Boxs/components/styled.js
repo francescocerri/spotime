@@ -13,12 +13,14 @@ export const useStyles = makeStyles(theme =>({
     width: '100%',
   },
   gridTitle: {
+    cursor: 'pointer',
     position: 'relative',
     margin: '.25rem',
     '&:hover': {
       transition: 'all .5s',
       transform: 'scale(1.2)',
       zIndex: 2,
+      // boxShadow: '0 5px 20px rgba(0,0,0,.8)',
     },
   },
   descriptionContent: {
@@ -48,6 +50,7 @@ export const useStyles = makeStyles(theme =>({
   },
   gridSingleContent: {
     padding: '.5rem 0',
+    cursor: 'pointer',
   },
   image: {
     height: '100%',

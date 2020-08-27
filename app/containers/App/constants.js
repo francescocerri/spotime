@@ -10,3 +10,5 @@ export const TOKEN_FAILED = `${scope}/TOKEN_FAILED`;
 export const REFRESH_TOKEN_REQUESTED = `${scope}/REFRESH_TOKEN_REQUESTED`;
 export const REFRESH_TOKEN_SUCCEEDED = `${scope}/REFRESH_TOKEN_SUCCEEDED`;
 export const REFRESH_TOKEN_FAILED = `${scope}/REFRESH_TOKEN_FAILED`;
+
+export const SET_SPOTIFY_URI = `${scope}/SET_SPOTIFY_URI`;

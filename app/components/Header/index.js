@@ -30,12 +30,12 @@ function Header(props) {
 
   return (
     <Grid className={classes.headerContainer}>
-      <AppBar position="static">
+      <AppBar position="static" color="inherit" className={classes.appBarContainer}>
         <Toolbar>
           <H6
             className={classes.title}
           >
-            <img src={Logo} className={classes.logo} alt="logo"/>
+            <img src={Logo} className={classes.logo} alt="logo" />
           </H6>
           {token.accessToken && (
             <div className={classes.profile}>

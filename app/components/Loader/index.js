@@ -6,12 +6,18 @@
 
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-// import styled from 'styled-components';
+
+import { useStyles } from './components/styled';
 import { CircularProgress } from '@material-ui/core';
 
 function Loader(props) {
   const { color } = props;
-  return <CircularProgress color={color} />;
+  const classes = useStyles();
+  return (
+    <div className={classes.container}>
+      <CircularProgress color={color} />
+    </div>
+  );
 }
 
 Loader.propTypes = {

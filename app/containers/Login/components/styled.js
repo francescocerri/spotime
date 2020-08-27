@@ -5,7 +5,7 @@ import { customThemeInfo } from '../../../theme';
 
 export const useStyles = makeStyles(theme => ({
   loginWrapper: {
-    height: `calc(100vh - ${customThemeInfo.HEADER_HEIGHT})`,
+    height: '100%',
   },
   loginContainer: {
     backgroundImage: `url(${Chitarra})`,

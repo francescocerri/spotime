@@ -28,9 +28,16 @@ const makeSelectToken = () =>
     substate => substate.token,
   )
 
+const makeSpotifyUri = () =>
+  createSelector(
+    selectApp,
+    substate => substate.spotifyUri,
+  )
+
 export {
   makeSelectLocation,
   getNotification,
   makeSelectLoading,
   makeSelectToken,
+  makeSpotifyUri,
 };

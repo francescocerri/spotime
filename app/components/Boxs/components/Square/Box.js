@@ -1,15 +1,18 @@
 import React, { memo } from 'react';
+import PropTypes from 'prop-types';
+
 import { useStyles } from '../styled';
 import { Grid } from '@material-ui/core';
 import { getInfoByType } from '../../utils';
 
 function Box(props) {
   const classes = useStyles(props);
-  const { images, albumName, artist, name } = getInfoByType(props);
+  const { playSong } = props;
+  const { images, albumName, artist, name, uri } = getInfoByType(props);
   const image = images[1] ? images[1].url : images[0].url;
 
   return (
-    <Grid item lg={2} md={3} xs={4}>
+    <Grid item lg={2} md={3} xs={4} onClick={() => playSong(uri)}>
       <div className={classes.gridTitle}>
         <div className={classes.descriptionContent}>
           <div className={classes.descriptionArea}>
@@ -22,5 +25,8 @@ function Box(props) {
     </Grid>
   );
 }
+Box.propTypes = {
+  playSong: PropTypes.func,
+};
 
 export default memo(Box);
