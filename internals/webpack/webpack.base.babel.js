@@ -5,14 +5,14 @@
 
 const path = require('path');
 const webpack = require('webpack');
-const dotenv = require('dotenv');
+const Dotenv = require('dotenv-webpack');
 
 // Add environment with .env see https://medium.com/@trekinbami/using-environment-variables-in-react-6b0a99d83cf5
-const env = dotenv.config().parsed;
+/* const env = dotenv.config().parsed;
 const envKeys = Object.keys(env).reduce((prev, next) => {
   prev[`process.env.${next}`] = JSON.stringify(env[next]);
   return prev;
-}, {});
+}, {}); */
 
 module.exports = options => ({
   mode: options.mode,
@@ -123,7 +123,7 @@ module.exports = options => ({
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development',
     }),
-    new webpack.DefinePlugin(envKeys),
+    new Dotenv(),
   ]),
   resolve: {
     modules: ['node_modules', 'app'],
