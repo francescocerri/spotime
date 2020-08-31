@@ -12,7 +12,7 @@ function Box(props) {
   const image = images[1] ? images[1].url : images[0].url;
 
   return (
-    <Grid item lg={2} md={3} xs={4} onClick={() => playSong(uri)}>
+    <Grid item lg={2} md={3} xs={6} onClick={() => playSong(uri)}>
       <div className={classes.gridTitle}>
         <div className={classes.descriptionContent}>
           <div className={classes.descriptionArea}>

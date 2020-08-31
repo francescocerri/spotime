@@ -12,7 +12,7 @@ function Box(props) {
   const image = images[1].url;
 
   return (
-    <Grid item lg={2} md={3} xs={4} className={classes.gridSingleContent} onClick={() => playSong(uri)}>
+    <Grid item lg={2} md={3} xs={6} className={classes.gridSingleContent} onClick={() => playSong(uri)}>
       <div className={classes.gridTitle}>
         <img src={image} alt="Track/album" className={`${classes.image} ${classes.imageRounded}`} />
         <div className={classes.titleContainer}>
