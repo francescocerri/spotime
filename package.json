@@ -81,7 +81,7 @@
     "lodash": "4.17.19",
     "loglevel": "^1.6.8",
     "minimist": "1.2.5",
-    "moment": "2.27.0",
+    "moment": "2.29.4",
     "prop-types": "15.7.2",
     "qs": "6.9.4",
     "react": "16.12.0",
